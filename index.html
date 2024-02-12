@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cardscandata</title>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardscan</title>
+    <style>
+        /* Utilisation de Google Fonts pour une police personnalisée */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body{
+            font-family: 'Montserrat', sans-serif; /* Utilisation de la police Montserrat */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Couleur de fond */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            text-align: center;
+        }
+
+        h1{
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        p{
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        a{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover{
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="image.jpg" alt="Description de l'image" width="300">
         <h1>Télécharger le fichier CSV</h1>
         <p>Cliquez sur le lien ci-dessous pour télécharger le fichier CSV :</p>
+        <!-- Lien de téléchargement -->
         <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv">Télécharger le fichier CSV</a>
-    </body>
+    </div>
+</body>
 </html>
