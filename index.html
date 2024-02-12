@@ -1,70 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardscan</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-        body{
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8; 
-            animation: backgroundAnimation 10s infinite alternate; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container{
-            text-align: center;
-        }
-
-        h1{
-            font-size: 2.5rem;
-            color: #333;
-        }
-
-        p{
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-   
-        @keyframes backgroundAnimation{
-            0%   { background-color: #f8f8f8; }
-            50%  { background-color: #fefefe; }
-            100% { background-color: #f8f8f8; }
-        }
-
-   
-        @keyframes imageAnimation{
-            0%   { transform: scale(1); }
-            50%  { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-  
-        img{
-            animation: imageAnimation 10s infinite alternate;
-            width: 150px;
-            border-radius: 50%; 
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /marche pas @*#
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <img src="image.jpg" alt="Logo Cardscan">
-        <h1>Télécharger le fichier CSV</h1>
-        <p>Cliquez sur le lien ci-dessous pour télécharger le fichier CSV :</p>
-        <!-- Lien de téléchargement -->
-        <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv">Télécharger le fichier CSV</a>
-    </div>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Cardscan</h1>
+                <ul>
+                    <li><a href="#download">Télécharger CSV</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <div class="container">
+                <h2>Votre solution de gestion de données</h2>
+                <p>Transformez vos données en insights puissants avec Cardscan.</p>
+                <a href="#download" class="btn">Télécharger Maintenant</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="download" class="section">
+        <div class="container">
+            <h2>Télécharger le fichier CSV</h2>
+            <p>Cliquez sur le bouton ci-dessous pour télécharger le fichier CSV :</p>
+            <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv" class="btn">Télécharger CSV</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>À Propos de Cardscan</h2>
+            <p>Cardscan est une plateforme de gestion de données avancée conçue pour simplifier votre flux de travail.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question ou demande d'assistance, n'hésitez pas à nous contacter :</p>
+            <a href="mailto:contact@cardscan.com" class="btn">Envoyer un Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cardscan. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>
+
