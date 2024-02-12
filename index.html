@@ -8,33 +8,35 @@
         /* Utilisation de Google Fonts pour une police personnalisée */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-        body{
+        body {
             font-family: 'Montserrat', sans-serif; /* Utilisation de la police Montserrat */
             margin: 0;
             padding: 0;
             background-color: #f8f8f8; /* Couleur de fond */
+            animation: backgroundAnimation 10s infinite alternate; /* Animation d'arrière-plan dynamique */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
-        .container{
+        .container {
             text-align: center;
         }
 
-        h1{
+        h1 {
             font-size: 2.5rem;
             color: #333;
         }
 
-        p{
+        p {
             font-size: 1.2rem;
             color: #666;
             margin-bottom: 20px;
         }
 
-        a{
+        /* Animation pour le lien de téléchargement */
+        a {
             display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
@@ -44,15 +46,36 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover{
+        a:hover {
             background-color: #0056b3;
+        }
+
+        /* Animation d'arrière-plan */
+        @keyframes backgroundAnimation {
+            0%   { background-color: #f8f8f8; }
+            50%  { background-color: #fefefe; }
+            100% { background-color: #f8f8f8; }
+        }
+
+        /* Animation pour l'image */
+        @keyframes imageAnimation {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Ajout de styles à l'image */
+        img {
+            animation: imageAnimation 10s infinite alternate; /* Animation pour l'image */
+            border-radius: 50%; /* Bord arrondi pour une image de forme circulaire */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Ombre portée */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Logo -->
-        <img src="image.jpg" alt="Description de l'image" width="300">
+        <img src="image.jpg" alt="Logo Cardscan" width="150">
         <h1>Télécharger le fichier CSV</h1>
         <p>Cliquez sur le lien ci-dessous pour télécharger le fichier CSV :</p>
         <!-- Lien de téléchargement -->
@@ -60,3 +83,4 @@
     </div>
 </body>
 </html>
+
