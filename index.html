@@ -5,56 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardscan</title>
     <style>
-        /* Utilisation de Google Fonts pour une police personnalisée */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-        body {
-            font-family: 'Montserrat', sans-serif; /* Utilisation de la police Montserrat */
+        body{
+            font-family: 'Montserrat', sans-serif; 
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8; /* Couleur de fond */
-            animation: backgroundAnimation 10s infinite alternate; /* Animation d'arrière-plan dynamique */
+            background-color: #f8f8f8; 
+            animation: backgroundAnimation 10s infinite alternate; 
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
-        .container {
+        .container{
             text-align: center;
         }
 
-        h1 {
+        h1{
             font-size: 2.5rem;
             color: #333;
         }
 
-        p {
+        p{
             font-size: 1.2rem;
             color: #666;
             margin-bottom: 20px;
         }
 
-        /* Animation d'arrière-plan */
-        @keyframes backgroundAnimation {
+   
+        @keyframes backgroundAnimation{
             0%   { background-color: #f8f8f8; }
             50%  { background-color: #fefefe; }
             100% { background-color: #f8f8f8; }
         }
 
-        /* Animation pour l'image */
-        @keyframes imageAnimation {
+   
+        @keyframes imageAnimation{
             0%   { transform: scale(1); }
             50%  { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
 
-        /* Ajout de styles à l'image */
-        img {
-            animation: imageAnimation 10s infinite alternate; /* Animation pour l'image */
-            width: 150px; /* Taille de l'image */
-            border-radius: 50%; /* Bord arrondi pour une image de forme circulaire */
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Ombre portée */
+  
+        img{
+            animation: imageAnimation 10s infinite alternate;
+            width: 150px;
+            border-radius: 50%; 
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /marche pas @*#
         }
     </style>
 </head>
