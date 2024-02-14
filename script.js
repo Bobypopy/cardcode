@@ -5,6 +5,7 @@ const screen = document.querySelector('body');
 
 // Variables pour la physique du jeu
 let isDragging = false;
+let mass = 1; // Masse de la boule
 let power = 0;
 let angle = 0;
 let velocityX = 0;
@@ -13,6 +14,7 @@ let angularVelocity = 0; // Vitesse angulaire de rotation
 const friction = 0.98; // Facteur de décélération
 const powerMultiplier = 0.1; // Multiplicateur de puissance
 const angularFriction = 0.95; // Facteur de décélération de rotation
+const frictionCoefficient = 0.05; // Coefficient de frottement avec la table
 
 // Fonction pour gérer le mouvement lors du glissement de la souris
 function handleMouseMove(event) {
@@ -25,12 +27,16 @@ function handleMouseMove(event) {
 function update() {
     if (isDragging) {
         power = Math.sqrt((logo.offsetLeft - event.clientX) ** 2 + (logo.offsetTop - event.clientY) ** 2) * powerMultiplier;
-        velocityX = Math.cos(angle) * power;
-        velocityY = Math.sin(angle) * power;
+        velocityX = Math.cos(angle) * power / mass;
+        velocityY = Math.sin(angle) * power / mass;
     }
     
     velocityX *= friction;
     velocityY *= friction;
+
+    // Frottement avec la table
+    velocityX -= velocityX * frictionCoefficient;
+    velocityY -= velocityY * frictionCoefficient;
 
     // Vérification des collisions avec le bord de l'écran
     if (logo.offsetLeft < 0 || logo.offsetLeft + logo.offsetWidth > screen.offsetWidth) {
