@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardscan - Téléchargement</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         body{
-            font-family:'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background-image: url('hero-background.jpg');
@@ -21,8 +22,9 @@
         }
         .logo{
             width: 100px;
-            height: auto;
-            animation: spin 2s infinite linear;
+            height: 100px;
+            border-radius: 50%;
+            animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
         }
         @keyframes spin{
             from{
@@ -30,6 +32,22 @@
             }
             to{
                 transform: rotate(360deg);
+            }
+        }
+        @keyframes sizeChange{
+            0%, 100%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.2);
+            }
+        }
+        @keyframes move{
+            0%, 100%{
+                transform: translateY(0);
+            }
+            50%{
+                transform: translateY(-10px);
             }
         }
         h1{
