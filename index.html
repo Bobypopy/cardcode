@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-        body{
+        body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
@@ -15,54 +15,67 @@
             background-size: cover;
             background-position: center;
             color: #ffffff;
+            overflow-x: hidden; /* Empêche le défilement horizontal */
         }
-        header{
+
+        header {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 0;
         }
-        .logo{
+
+        .logo {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
         }
-        @keyframes spin{
-            from{
+
+        @keyframes spin {
+            from {
                 transform: rotate(0deg);
             }
-            to{
+
+            to {
                 transform: rotate(360deg);
             }
         }
-        @keyframes sizeChange{
-            0%, 100%{
+
+        @keyframes sizeChange {
+            0%, 100% {
                 transform: scale(1);
             }
-            50%{
+
+            50% {
                 transform: scale(1.2);
             }
         }
-        @keyframes move{
-            0%, 100%{
+
+        @keyframes move {
+            0%, 100% {
                 transform: translateY(0);
             }
-            50%{
+
+            50% {
                 transform: translateY(-10px);
             }
         }
-        h1{
+
+        h1 {
             font-size: 48px;
             margin: 20px 0;
         }
-        #download{
+
+        #download {
             padding: 100px 0;
             text-align: center;
         }
-        h2{
+
+        h2 {
             font-size: 36px;
             margin-bottom: 40px;
         }
-        .btn-download{
+
+        .btn-download {
             display: inline-block;
             background-color: #ffcc00;
             color: #000000;
@@ -72,24 +85,70 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
-        .btn-download:hover{
+
+        .btn-download:hover {
             background-color: #ffd633;
         }
-        .animate__animated{
+
+        .animate__animated {
             animation-duration: 3s;
         }
-        .animate__fadeInDown{
+
+        .animate__fadeInDown {
             animation-name: fadeInDown;
         }
-        @keyframes fadeInDown{
-            from{
+
+        @keyframes fadeInDown {
+            from {
                 opacity: 0;
                 transform: translate3d(0, -100%, 0);
             }
-            to{
+
+            to {
                 opacity: 1;
                 transform: none;
             }
+        }
+
+        .floating-cards {
+            position: fixed;
+            top: -50px;
+            left: 10%;
+            animation: floatCards 8s infinite linear alternate;
+        }
+
+        @keyframes floatCards {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-50px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -106,9 +165,19 @@
     <section id="download">
         <div class="container">
             <h2 class="animate__animated animate__fadeInDown">Télécharger le fichier CSV</h2>
-            <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv" class="btn-download btn btn-lg animate__animated animate__fadeInUp">Télécharger CSV</a>
+            <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv"
+               class="btn-download btn btn-lg animate__animated animate__fadeInUp">Télécharger CSV</a>
         </div>
     </section>
+
+    <!-- Floating cards -->
+    <div class="floating-cards">
+        <img src="card1.jpg" alt="Card" width="100">
+        <img src="card2.jpg" alt="Card" width="100">
+        <img src="card3.jpg" alt="Card" width="100">
+        <img src="card4.jpg" alt="Card" width="100">
+        <img src="card5.jpg" alt="Card" width="100">
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
