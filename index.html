@@ -7,62 +7,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-        body{
+    
+        body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('hero-background.jpg');
+            background-image: url('background.jpg');
             background-size: cover;
             background-position: center;
             color: #ffffff;
         }
-        header{
+      
+        header {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 0;
         }
-        .logo{
+        .logo {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
         }
-        @keyframes spin{
-            from{
+        @keyframes spin {
+            from {
                 transform: rotate(0deg);
             }
-            to{
+            to {
                 transform: rotate(360deg);
             }
         }
-        @keyframes sizeChange{
-            0%, 100%{
+        @keyframes sizeChange {
+            0%, 100% {
                 transform: scale(1);
             }
-            50%{
+            50% {
                 transform: scale(1.2);
             }
         }
-        @keyframes move{
-            0%, 100%{
+        @keyframes move {
+            0%, 100% {
                 transform: translateY(0);
             }
-            50%{
+            50% {
                 transform: translateY(-10px);
             }
         }
-        h1{
+        h1 {
             font-size: 48px;
             margin: 20px 0;
         }
-        #download{
+     
+        #download {
             padding: 100px 0;
             text-align: center;
         }
-        h2{
+        h2 {
             font-size: 36px;
             margin-bottom: 40px;
         }
-        .btn-download{
+        .btn-download {
             display: inline-block;
             background-color: #ffcc00;
             color: #000000;
@@ -72,21 +75,22 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
-        .btn-download:hover{
+        .btn-download:hover {
             background-color: #ffd633;
         }
-        .animate__animated{
+        /* Animation pour le titre */
+        .animate__animated {
             animation-duration: 3s;
         }
-        .animate__fadeInDown{
+        .animate__fadeInDown {
             animation-name: fadeInDown;
         }
-        @keyframes fadeInDown{
-            from{
+        @keyframes fadeInDown {
+            from {
                 opacity: 0;
                 transform: translate3d(0, -100%, 0);
             }
-            to{
+            to {
                 opacity: 1;
                 transform: none;
             }
