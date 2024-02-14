@@ -23,7 +23,7 @@ function handleMouseMove(event) {
     angle = Math.atan2(mouseY - logo.offsetTop, mouseX - logo.offsetLeft);
 }
 
-// Fonction de mise à jour de la position des boules
+// Fonction de mise à jour de la position et de la rotation des boules
 function update() {
     if (isDragging) {
         power = Math.sqrt((logo.offsetLeft - event.clientX) ** 2 + (logo.offsetTop - event.clientY) ** 2) * powerMultiplier;
@@ -50,9 +50,19 @@ function update() {
     logo.style.left = `${logo.offsetLeft + velocityX}px`;
     logo.style.top = `${logo.offsetTop + velocityY}px`;
 
-    // Rotation de la boule
+    // Calcul de l'angle de rotation supplémentaire en fonction de la direction du mouvement
+    let contactPointX = logo.offsetLeft + logo.offsetWidth / 2;
+    let contactPointY = logo.offsetTop + logo.offsetHeight / 2;
+    let distanceX = event.clientX - contactPointX;
+    let distanceY = event.clientY - contactPointY;
+    let spinAngle = Math.atan2(distanceY, distanceX);
+
+    // Ajout de la vitesse angulaire de rotation supplémentaire
+    angularVelocity += (spinAngle - angle) * 180 / Math.PI;
     angularVelocity *= angularFriction;
-    logo.style.transform = `rotate(${angularVelocity}deg)`;
+
+    // Rotation de la boule
+    logo.style.transform = `translate(-50%, -50%) rotate(${angularVelocity}deg)`;
 
     // Appel de la fonction update à chaque trame
     requestAnimationFrame(update);
