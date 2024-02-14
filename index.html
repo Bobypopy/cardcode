@@ -3,29 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardscan</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Cardscan - Téléchargement</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Styles de l'en-tête */
+        header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+        h1 {
+            font-size: 32px;
+            color: #333333;
+            margin-left: 20px;
+        }
+        /* Styles de la section de téléchargement */
+        #download {
+            background-color: #ffffff;
+            padding: 100px 0;
+            text-align: center;
+        }
+        h2 {
+            font-size: 48px;
+            color: #333333;
+            margin-bottom: 40px;
+        }
+        .btn-download {
+            display: inline-block;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 5px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-download:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<body style="background-image: url('hero_background.jpg'); background-size: cover; background-position: center;">
+<body>
+    <!-- En-tête -->
     <header>
-        <nav>
-            <div class="container">
-                <!-- Ajout de l'icône avec des classes pour le style et l'animation -->
-                <img src="image.jpg" alt="Icône de Cardscan" class="icon" style="margin-right: 60px;">
-                <h1>Cardscan</h1>
-            </div>
-        </nav>
+        <div class="container d-flex align-items-center">
+            <img src="image.jpg" alt="Icône de Cardscan" class="logo">
+            <h1>Cardscan</h1>
+        </div>
     </header>
 
-    <section id="download" class="section">
+    <!-- Section de téléchargement -->
+    <section id="download">
         <div class="container">
             <h2>Télécharger le fichier CSV</h2>
-            <p>Cliquez sur le bouton ci-dessous pour télécharger le fichier CSV :</p>
-            <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv" class="btn">Télécharger CSV</a>
+            <a href="cardmakerval_crypte.csv" download="cardmakerval_crypte.csv" class="btn-download">Télécharger CSV</a>
         </div>
     </section>
-
-  
 </body>
 </html>
