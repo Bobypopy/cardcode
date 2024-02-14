@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-     
+        /* Styles généraux */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -17,7 +17,7 @@
             background-position: center;
             color: #ffffff;
         }
-     
+        /* Styles de l'en-tête */
         header {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 0;
@@ -26,8 +26,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            animation: spin 2s infinite linear;
-            transition: transform 0.3s ease-in-out;
+            animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
         }
         @keyframes spin {
             from {
@@ -37,11 +36,27 @@
                 transform: rotate(360deg);
             }
         }
+        @keyframes sizeChange {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        @keyframes move {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
         h1 {
             font-size: 48px;
             margin: 20px 0;
         }
-       
+        /* Styles de la section de téléchargement */
         #download {
             padding: 100px 0;
             text-align: center;
@@ -80,30 +95,13 @@
                 transform: none;
             }
         }
-      
-        @keyframes sizeChange {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-        @keyframes move {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
     </style>
 </head>
 <body>
     <!-- En-tête -->
     <header class="text-center">
         <div class="container">
-            <img src="image.jpg" alt="Icône de Cardscan" class="logo animate__animated animate__fadeInDown">
+            <img src="image.jpg" alt="Icône de Cardscan" class="logo">
             <h1 class="animate__animated animate__fadeInDown">Cardscan</h1>
         </div>
     </header>
@@ -119,3 +117,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
