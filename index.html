@@ -11,43 +11,52 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-image: url('hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            text-align: center;
         }
         /* Styles de l'en-tête */
         header {
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 0;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
         .logo {
             width: 100px;
             height: auto;
+            animation: spin 2s infinite linear;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
         h1 {
-            font-size: 32px;
-            color: #333333;
-            margin-left: 20px;
+            font-size: 48px;
+            margin: 20px 0;
         }
         /* Styles de la section de téléchargement */
         #download {
-            background-color: #ffffff;
             padding: 100px 0;
             text-align: center;
         }
         h2 {
-            font-size: 48px;
-            color: #333333;
+            font-size: 36px;
             margin-bottom: 40px;
         }
         .btn-download {
             display: inline-block;
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: #ffcc00;
+            color: #000000;
             padding: 16px 32px;
             border-radius: 5px;
             font-size: 20px;
@@ -55,14 +64,14 @@
             transition: background-color 0.3s ease;
         }
         .btn-download:hover {
-            background-color: #0056b3;
+            background-color: #ffd633;
         }
     </style>
 </head>
 <body>
     <!-- En-tête -->
     <header>
-        <div class="container d-flex align-items-center">
+        <div class="container">
             <img src="image.jpg" alt="Icône de Cardscan" class="logo">
             <h1>Cardscan</h1>
         </div>
