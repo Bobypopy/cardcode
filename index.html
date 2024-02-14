@@ -15,7 +15,7 @@
             background-size: cover;
             background-position: center;
             color: #ffffff;
-            overflow-x: hidden; /* Empêche le défilement horizontal */
+            overflow: hidden; /* Empêche le défilement horizontal et vertical */
         }
 
         header {
@@ -23,11 +23,20 @@
             padding: 20px 0;
         }
 
+        .container {
+            position: relative;
+        }
+
         .logo {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            animation: spin 2s infinite linear, sizeChange 5s infinite alternate;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
         @keyframes spin {
@@ -47,16 +56,6 @@
 
             50% {
                 transform: scale(1.2);
-            }
-        }
-
-        @keyframes move {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
             }
         }
 
@@ -110,8 +109,8 @@
             }
         }
 
+       
 
-    
         .footer {
             background-color: #333;
             color: #fff;
@@ -151,7 +150,46 @@
         </div>
     </section>
 
+  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const logo = document.querySelector('.logo');
+        const container = document.querySelector('.container');
+
+        const containerRect = container.getBoundingClientRect();
+        const logoRect = logo.getBoundingClientRect();
+        let dx = 1;
+        let dy = 1;
+
+        container.addEventListener('mousemove', (e) => {
+            const offsetX = e.clientX - containerRect.left;
+            const offsetY = e.clientY - containerRect.top;
+
+            const centerX = containerRect.width / 2;
+            const centerY = containerRect.height / 2;
+
+            const distanceX = offsetX - centerX;
+            const distanceY = offsetY - centerY;
+
+            const speed = 0.2;
+
+            if (Math.abs(distanceX) <= centerX - logoRect.width / 2 && Math.abs(distanceY) <= centerY - logoRect.height / 2) {
+                logo.style.transform = `translate(${distanceX * speed}px, ${distanceY * speed}px)`;
+            }
+            else {
+                dx = -dx;
+                dy = -dy;
+            }
+        });
+
+        function animateLogo() {
+            logo.style.transform = `translate(${dx}px, ${dy}px)`;
+            requestAnimationFrame(animateLogo);
+        }
+
+        animateLogo();
+    </script>
 </body>
 </html>
 
