@@ -1,6 +1,5 @@
 // Récupération des éléments du DOM
 const logo = document.querySelector('.logo');
-const image = document.querySelector('img');
 const screen = document.querySelector('body');
 
 // Variables pour la physique du jeu
@@ -23,10 +22,23 @@ function handleMouseMove(event) {
     angle = Math.atan2(mouseY - logo.offsetTop, mouseX - logo.offsetLeft);
 }
 
+// Fonction pour gérer le début du glissement
+function handleMouseDown() {
+    isDragging = true;
+}
+
+// Fonction pour gérer la fin du glissement
+function handleMouseUp() {
+    isDragging = false;
+    power = Math.sqrt(Math.pow(logo.offsetLeft - event.clientX, 2) + Math.pow(logo.offsetTop - event.clientY, 2)) * powerMultiplier;
+    velocityX = Math.cos(angle) * power / mass;
+    velocityY = Math.sin(angle) * power / mass;
+}
+
 // Fonction de mise à jour de la position et de la rotation des boules
 function update() {
     if (isDragging) {
-        power = Math.sqrt((logo.offsetLeft - event.clientX) ** 2 + (logo.offsetTop - event.clientY) ** 2) * powerMultiplier;
+        power = Math.sqrt(Math.pow(logo.offsetLeft - event.clientX, 2) + Math.pow(logo.offsetTop - event.clientY, 2)) * powerMultiplier;
         velocityX = Math.cos(angle) * power / mass;
         velocityY = Math.sin(angle) * power / mass;
     }
@@ -70,7 +82,10 @@ function update() {
 
 // Ajout des écouteurs d'événements pour gérer le mouvement de la souris
 screen.addEventListener('mousemove', handleMouseMove);
+screen.addEventListener('mousedown', handleMouseDown);
+screen.addEventListener('mouseup', handleMouseUp);
 
 // Lancer la mise à jour des positions des boules
 update();
+
 
