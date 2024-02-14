@@ -6,7 +6,6 @@
     <title>Cardscan - Téléchargement</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -16,7 +15,7 @@
             background-size: cover;
             background-position: center;
             color: #ffffff;
-            overflow: hidden; /* Empêche le défilement horizontal et vertical */
+            overflow-x: hidden; /* Empêche le défilement horizontal */
         }
 
         header {
@@ -24,21 +23,41 @@
             padding: 20px 0;
         }
 
-        .container {
-            position: relative;
-            width: 100vw; /* Pleine largeur de l'écran */
-            height: 100vh; /* Pleine hauteur de l'écran */
-        }
-
         .logo {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            cursor: pointer;
-            transition: transform 0.2s;
+            animation: spin 2s infinite linear, sizeChange 5s infinite alternate, move 5s infinite alternate;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes sizeChange {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes move {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         h1 {
@@ -79,10 +98,6 @@
             animation-name: fadeInDown;
         }
 
-        .animate__fadeInUp {
-            animation-name: fadeInUp;
-        }
-
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -95,16 +110,25 @@
             }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 100%, 0);
-            }
 
-            to {
-                opacity: 1;
-                transform: none;
-            }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -112,7 +136,7 @@
     <!-- En-tête -->
     <header class="text-center">
         <div class="container">
-            <img src="image.jpg" alt="Icône de Cardscan" class="logo animate__animated animate__fadeInDown">
+            <img src="image.jpg" alt="Icône de Cardscan" class="logo">
             <h1 class="animate__animated animate__fadeInDown">Cardscan</h1>
         </div>
     </header>
@@ -126,43 +150,9 @@
         </div>
     </section>
 
+  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const logo = document.querySelector('.logo');
-
-        let dx = 0;
-        let dy = 0;
-        let lastMouseX = null;
-        let lastMouseY = null;
-
-        document.addEventListener('mousemove', (e) => {
-            if (lastMouseX !== null && lastMouseY !== null) {
-                dx = (e.clientX - lastMouseX) * 0.1;
-                dy = (e.clientY - lastMouseY) * 0.1;
-            }
-
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-        });
-
-        function animateLogo() {
-            const logoRect = logo.getBoundingClientRect();
-
-            if (logoRect.left + dx < 0 || logoRect.right + dx > window.innerWidth) {
-                dx *= -0.8; // Change la direction et diminue la vitesse si l'icône touche les bords horizontaux
-            }
-            if (logoRect.top + dy < 0 || logoRect.bottom + dy > window.innerHeight) {
-                dy *= -0.8; // Change la direction et diminue la vitesse si l'icône touche les bords verticaux
-            }
-
-            logo.style.left = `${logoRect.left + dx}px`;
-            logo.style.top = `${logoRect.top + dy}px`;
-
-            requestAnimationFrame(animateLogo);
-        }
-
-        animateLogo();
-    </script>
 </body>
 </html>
 
