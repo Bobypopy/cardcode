@@ -25,6 +25,8 @@
 
         .container {
             position: relative;
+            width: 100vw; /* Pleine largeur de l'écran */
+            height: 100vh; /* Pleine hauteur de l'écran */
         }
 
         .logo {
@@ -109,7 +111,6 @@
             }
         }
 
-       
 
         .footer {
             background-color: #333;
@@ -150,41 +151,40 @@
         </div>
     </section>
 
-  
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         const logo = document.querySelector('.logo');
-        const container = document.querySelector('.container');
 
-        const containerRect = container.getBoundingClientRect();
-        const logoRect = logo.getBoundingClientRect();
-        let dx = 1;
-        let dy = 1;
+        let dx = 0;
+        let dy = 0;
+        let lastMouseX = null;
+        let lastMouseY = null;
 
-        container.addEventListener('mousemove', (e) => {
-            const offsetX = e.clientX - containerRect.left;
-            const offsetY = e.clientY - containerRect.top;
-
-            const centerX = containerRect.width / 2;
-            const centerY = containerRect.height / 2;
-
-            const distanceX = offsetX - centerX;
-            const distanceY = offsetY - centerY;
-
-            const speed = 0.2;
-
-            if (Math.abs(distanceX) <= centerX - logoRect.width / 2 && Math.abs(distanceY) <= centerY - logoRect.height / 2) {
-                logo.style.transform = `translate(${distanceX * speed}px, ${distanceY * speed}px)`;
+        document.addEventListener('mousemove', (e) => {
+            if (lastMouseX !== null && lastMouseY !== null) {
+                dx = (e.clientX - lastMouseX) * 0.1;
+                dy = (e.clientY - lastMouseY) * 0.1;
             }
-            else {
-                dx = -dx;
-                dy = -dy;
-            }
+
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
         });
 
         function animateLogo() {
-            logo.style.transform = `translate(${dx}px, ${dy}px)`;
+            const logoRect = logo.getBoundingClientRect();
+
+            if (logoRect.left + dx < 0 || logoRect.right + dx > window.innerWidth) {
+                dx *= -0.8; // Change la direction et diminue la vitesse si l'icône touche les bords horizontaux
+            }
+            if (logoRect.top + dy < 0 || logoRect.bottom + dy > window.innerHeight) {
+                dy *= -0.8; // Change la direction et diminue la vitesse si l'icône touche les bords verticaux
+            }
+
+            logo.style.left = `${logoRect.left + dx}px`;
+            logo.style.top = `${logoRect.top + dy}px`;
+
             requestAnimationFrame(animateLogo);
         }
 
