@@ -1,69 +1,62 @@
 // Récupération des éléments du DOM
-const logo = document.querySelector('.logo');
-const screen = document.querySelector('body');
+const boule = document.querySelector('.boule');
+const ecran = document.querySelector('body');
 
 // Variables pour la physique du jeu
-let mass = 1; // Masse de la boule
-let power = 0;
+let masse = 1; // Masse de la boule
+let puissance = 0;
 let angle = 0;
-let velocityX = 0;
-let velocityY = 0;
-let angularVelocity = 0; // Vitesse angulaire de rotation
-const friction = 0.98; // Facteur de décélération
-const powerMultiplier = 0.1; // Multiplicateur de puissance
-const angularFriction = 0.95; // Facteur de décélération de rotation
-const frictionCoefficient = 0.05; // Coefficient de frottement avec la table
+let vitesseX = 0;
+let vitesseY = 0;
+let vitesseAngulaire = 0; // Vitesse angulaire de rotation
+const frottement = 0.98; // Facteur de décélération
+const multiplicateurPuissance = 0.1; // Multiplicateur de puissance
+const frottementAngulaire = 0.95; // Facteur de décélération de rotation
+const coefficientFrottement = 0.05; // Coefficient de frottement avec la table
 
-// Fonction pour gérer le mouvement lors du glissement de la souris
-function handleMouseMove(event) {
+// Fonction pour gérer le mouvement lors du déplacement de la souris
+function gererDeplacementSouris(event) {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
-    angle = Math.atan2(mouseY - logo.offsetTop, mouseX - logo.offsetLeft);
+    angle = Math.atan2(mouseY - boule.offsetTop, mouseX - boule.offsetLeft);
 }
 
-// Fonction de mise à jour de la position et de la rotation des boules
+// Fonction de mise à jour de la position et de la rotation de la boule
 function update() {
-    velocityX *= friction;
-    velocityY *= friction;
+    // Calcul de la vitesse en fonction de la direction et de la puissance
+    puissance = Math.sqrt(vitesseX ** 2 + vitesseY ** 2);
+    angle = Math.atan2(vitesseY, vitesseX);
 
-    // Frottement avec la table
-    velocityX -= velocityX * frictionCoefficient;
-    velocityY -= velocityY * frictionCoefficient;
+    // Calcul de la vitesse angulaire en fonction de la vitesse de déplacement
+    vitesseAngulaire = Math.sqrt(vitesseX ** 2 + vitesseY ** 2);
 
-    // Vérification des collisions avec le bord de l'écran
-    if (logo.offsetLeft < 0 || logo.offsetLeft + logo.offsetWidth > screen.offsetWidth) {
-        velocityX *= -1;
+    // Application du frottement
+    vitesseX *= frottement;
+    vitesseY *= frottement;
+    vitesseAngulaire *= frottementAngulaire;
+
+    // Application des lois de la physique pour les rebonds sur les bords de l'écran
+    if (boule.offsetLeft < 0 || boule.offsetLeft + boule.offsetWidth > ecran.offsetWidth) {
+        vitesseX *= -1;
     }
-    if (logo.offsetTop < 0 || logo.offsetTop + logo.offsetHeight > screen.offsetHeight) {
-        velocityY *= -1;
+    if (boule.offsetTop < 0 || boule.offsetTop + boule.offsetHeight > ecran.offsetHeight) {
+        vitesseY *= -1;
     }
 
-    // Mise à jour de la position des boules
-    logo.style.left = `${logo.offsetLeft + velocityX}px`;
-    logo.style.top = `${logo.offsetTop + velocityY}px`;
+    // Mise à jour de la position de la boule
+    boule.style.left = `${boule.offsetLeft + vitesseX}px`;
+    boule.style.top = `${boule.offsetTop + vitesseY}px`;
 
-    // Calcul de l'angle de rotation supplémentaire en fonction de la direction du mouvement
-    let contactPointX = logo.offsetLeft + logo.offsetWidth / 2;
-    let contactPointY = logo.offsetTop + logo.offsetHeight / 2;
-    let distanceX = event.clientX - contactPointX;
-    let distanceY = event.clientY - contactPointY;
-    let spinAngle = Math.atan2(distanceY, distanceX);
-
-    // Ajout de la vitesse angulaire de rotation supplémentaire
-    angularVelocity += (spinAngle - angle) * 180 / Math.PI;
-    angularVelocity *= angularFriction;
-
-    // Rotation de la boule
-    logo.style.transform = `translate(-50%, -50%) rotate(${angularVelocity}deg)`;
+    // Mise à jour de la rotation de la boule
+    boule.style.transform = `rotate(${vitesseAngulaire}deg)`;
 
     // Appel de la fonction update à chaque trame
     requestAnimationFrame(update);
 }
 
-// Ajout des écouteurs d'événements pour gérer le mouvement de la souris
-screen.addEventListener('mousemove', handleMouseMove);
+// Ajout d'un écouteur d'événements pour le mouvement de la souris
+ecran.addEventListener('mousemove', gererDeplacementSouris);
 
-// Lancer la mise à jour des positions des boules
+// Lancer la mise à jour des positions et de la rotation de la boule
 update();
-
 
